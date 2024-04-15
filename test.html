@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 
 <head>
+
+    <style>
+        /* Define the custom cursor */
+        .custom-cursor {
+            cursor: pointer; /* Set cursor to pointer */
+            cursor: url('path_to_your_cursor_icon.png'), pointer; /* Optionally, set a custom cursor icon */
+        }
+    </style>
+    
     <script>
         function toRight() {
             let circle = document.querySelector("circle");
@@ -57,10 +66,18 @@
                 circle.setAttribute("fill", "red")
             }
         }
+
+        function startMoving() {
+            let circle = document.querySelector("circle");
+            circle.classList.add("custom-cursor");  
+            circle.addEventListener("click", function () {
+                toRight();
+            });
+        }
     </script>
 </head>
 
-<body onload="toRight()" <body>
+<body onload="startMoving()" <body>
     <div>
         <svg height="300" width="500">
             <rect x1="0" y1="0" height="300" width="500" style="stroke:#0000FF" fill="#FFFFFF" />
