@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<head>
+    <script>
+        function toRight() {
+            let circle = document.querySelector("circle");
+            let cx = circle.getAttribute("cx")
+            cx = Number(cx);
+            cx += 2;
+            circle.setAttribute("cx", cx);
+            if (cx < 450)
+                window.requestAnimationFrame(toRight);
+            else {
+                down();
+                circle.setAttribute("fill", "yellow")
+            }
+        }
+
+        function down() {
+            let circle = document.querySelector("circle");
+            let cy = circle.getAttribute("cy")
+            cy = Number(cy);
+            cy += 2;
+            circle.setAttribute("cy", cy);
+            if (cy < 250)
+                window.requestAnimationFrame(down);
+            else {
+                left();
+                circle.setAttribute("fill", "green")
+            }
+        }
+
+        function left() {
+            let circle = document.querySelector("circle");
+            let cx = circle.getAttribute("cx")
+            cx = Number(cx);
+            cx -= 2;
+            circle.setAttribute("cx", cx);
+            if (cx > 50)
+                window.requestAnimationFrame(left);
+            else {
+                up();
+                circle.setAttribute("fill", "orange")
+            }
+        }
+
+        function up() {
+            let circle = document.querySelector("circle");
+            let cy = circle.getAttribute("cy")
+            cy = Number(cy);
+            cy -= 2;
+            circle.setAttribute("cy", cy);
+            if (cy > 50)
+                window.requestAnimationFrame(up);
+            else {
+                toRight();
+                circle.setAttribute("fill", "red")
+            }
+        }
+    </script>
+</head>
+
+<body onload="toRight()" <body>
+    <div>
+        <svg height="300" width="500">
+            <rect x1="0" y1="0" height="300" width="500" style="stroke:#0000FF" fill="#FFFFFF" />
+
+            <circle cx="50" cy="50" r="50" fill="red" />
+        </svg>
+    </div>
+</body>
+
+</html>
